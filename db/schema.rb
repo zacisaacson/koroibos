@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 2020_03_02_232414) do
     t.datetime "updated_at", null: false
     t.index ["sport_id"], name: "index_events_on_sport_id"
   end
+
+  create_table "olympian_events", force: :cascade do |t|
+    t.bigint "olympian_id"
+    t.bigint "event_id"
+    t.string "medal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_olympian_events_on_event_id"
+    t.index ["olympian_id"], name: "index_olympian_events_on_olympian_id"
+  end
+
   create_table "olympians", force: :cascade do |t|
     t.string "name"
     t.string "sex"
@@ -42,5 +53,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_232414) do
   end
 
   add_foreign_key "events", "sports"
+  add_foreign_key "olympian_events", "events"
+  add_foreign_key "olympian_events", "olympians"
   add_foreign_key "olympians", "sports"
 end
