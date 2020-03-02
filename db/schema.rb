@@ -15,6 +15,13 @@ ActiveRecord::Schema.define(version: 2020_03_02_232414) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.bigint "sport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_events_on_sport_id"
+  end
   create_table "olympians", force: :cascade do |t|
     t.string "name"
     t.string "sex"
