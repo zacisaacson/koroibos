@@ -18,4 +18,8 @@ class Olympian < ApplicationRecord
   def self.get_youngest
     order(:age).limit(1)
   end
+
+  def self.get_oldest
+    order(age: :desc).limit(1)
+  end
 end
