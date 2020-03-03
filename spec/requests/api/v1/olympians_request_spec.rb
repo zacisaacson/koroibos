@@ -60,11 +60,27 @@ describe "Olympians API" do
     expect(response).to be_successful
 
     olympian = JSON.parse(response.body)
+
     expect(olympian['olympians'].length).to eq(1)
     expect(olympian['olympians'][0]['name']).to eq(@olympian_3.name)
     expect(olympian['olympians'][0]['team']).to eq(@olympian_3.team)
     expect(olympian['olympians'][0]['age']).to eq(@olympian_3.age)
     expect(olympian['olympians'][0]['sport']).to eq(@olympian_3.sport.name)
     expect(olympian['olympians'][0]['total_medals_won']).to eq(@olympian_3.total_medals_won)
+  end
+
+  it "shows oldest olympian" do
+    get "/api/v1/olympians?age=oldest"
+
+    expect(response).to be_successful
+
+    olympian = JSON.parse(response.body)
+    
+    expect(olympian['olympians'].length).to eq(1)
+    expect(olympian['olympians'][0]['name']).to eq(@olympian_1.name)
+    expect(olympian['olympians'][0]['team']).to eq(@olympian_1.team)
+    expect(olympian['olympians'][0]['age']).to eq(@olympian_1.age)
+    expect(olympian['olympians'][0]['sport']).to eq(@olympian_1.sport.name)
+    expect(olympian['olympians'][0]['total_medals_won']).to eq(@olympian_1.total_medals_won)
   end
 end
