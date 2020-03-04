@@ -6,7 +6,7 @@ task :import_olympians => [:environment] do
   CSV.foreach(file, {:headers => true, :header_converters => :symbol}) do |row|
     row = row.to_hash
     sport = Sport.find_or_create_by(name: row[:sport])
-    Olympian.create( name: row[:name],
+    Olympian.find_or_create_by( name: row[:name],
                       sex: row[:sex],
                       age: row[:age],
                       height: row[:height],
@@ -23,7 +23,7 @@ task :import_events => [:environment] do
   CSV.foreach(file, {:headers => true, :header_converters => :symbol}) do |row|
     row = row.to_hash
     sport = Sport.find_or_create_by(name: row[:sport])
-    Event.create( sport_id: sport.id,
+    Event.find_or_create_by( sport_id: sport.id,
                   name: row[:event]
                 )
     end
