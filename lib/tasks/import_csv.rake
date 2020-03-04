@@ -41,12 +41,3 @@ task :import_olympian_events => [:environment] do
                           medal: row[:medal])
   end
 end
-
-desc "Import sports form csv file"
-task :import_sports => [:environment] do
-  file = "data/olympic_data_2016.csv"
-  CSV.foreach(file, {:headers => true, :header_converters => :symbol}) do |row|
-    row = row.to_hash
-    Sport.create(name: row[:sport])
-  end
-end
