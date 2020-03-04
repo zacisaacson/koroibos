@@ -6,7 +6,7 @@
 
 The Koroibos API emulates a take home challenge and utilizes six endpoints using 2016 Olympic data. The endpoints include information about every olympian that competed, the youngest and oldest olympians, every sport and its events, and the medalists for each event.
 
-This API is deployed to Heroku [here](https://https://pacific-inlet-44351.herokuapp.com/api/v1/olympians).
+This API is deployed to Heroku [here](https://pacific-inlet-44351.herokuapp.com/api/v1/olympians).
 
 
 
